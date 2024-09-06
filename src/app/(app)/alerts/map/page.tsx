@@ -10,24 +10,35 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator
 } from "@/components/ui/breadcrumb";
+import { Card, CardContent } from "@/components/ui/card";
 
-export default function DashboardPage() {
+export default function ListPage() {
   return (
-    <ContentLayout title="Dashboard">
+    <ContentLayout title="Site List">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link href="/">Home</Link>
+              <Link href="/dashboard">Home</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>Dashboard</BreadcrumbPage>
+            <BreadcrumbLink asChild>
+              <Link href="/alerts">Alerts</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>Map</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <PlaceholderContent />
+      <Card className="rounded-lg border-none mt-4">
+      <CardContent className="p-6">
+      <PlaceholderContent  height="600px" />
+      </CardContent>
+      </Card>
     </ContentLayout>
   );
 }

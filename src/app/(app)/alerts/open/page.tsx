@@ -10,30 +10,41 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator
 } from "@/components/ui/breadcrumb";
+import { DevicesTable } from "@/components/tables/devices";
+import { AlertsTable } from "@/components/tables/alerts";
+import { RecentSales } from "@/components/alerts/recent";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export default function CategoriesPage() {
+export default function AlertsOpenPage() {
   return (
-    <ContentLayout title="Categories">
+    <ContentLayout title="Alerts">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link href="/">Home</Link>
+              <Link href="/dashboard">Home</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link href="/dashboard">Dashboard</Link>
+              <Link href="/alerts">Alerts</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>Categories</BreadcrumbPage>
+            <BreadcrumbPage>Open Alerts</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <PlaceholderContent />
+      <Card className="mt-4">
+        <CardHeader>
+          <CardTitle>Active Alerts</CardTitle>
+        </CardHeader>
+        <CardContent>
+     <RecentSales />
+        </CardContent>
+      </Card>
     </ContentLayout>
   );
 }

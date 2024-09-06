@@ -15,6 +15,8 @@ import {
   TooltipContent,
   TooltipProvider
 } from "@/components/ui/tooltip";
+import { SignOutButton } from "@clerk/nextjs";
+import { group } from "console";
 
 interface MenuProps {
   isOpen: boolean | undefined;
@@ -83,7 +85,7 @@ export function Menu({ isOpen }: MenuProps) {
                           </TooltipTrigger>
                           {isOpen === false && (
                             <TooltipContent side="right">
-                              {label}
+                              {groupLabel + " - " + label}
                             </TooltipContent>
                           )}
                         </Tooltip>
@@ -113,7 +115,9 @@ export function Menu({ isOpen }: MenuProps) {
                     className="w-full justify-center h-10 mt-5"
                   >
                     <span className={cn(isOpen === false ? "" : "mr-4")}>
+                      <SignOutButton>
                       <LogOut size={18} />
+                      </SignOutButton>
                     </span>
                     <p
                       className={cn(

@@ -1,12 +1,18 @@
+"use client";
 import { ModeToggle } from "@/components/mode-toggle";
-import { UserNav } from "@/components/admin-panel/user-nav";
 import { SheetMenu } from "@/components/admin-panel/sheet-menu";
+import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
+
+import { dark } from "@clerk/themes";
+import { useTheme } from "next-themes";
 
 interface NavbarProps {
   title: string;
 }
 
 export function Navbar({ title }: NavbarProps) {
+  const { theme } = useTheme();
+
   return (
     <header className="sticky top-0 z-10 w-full bg-background/95 shadow backdrop-blur supports-[backdrop-filter]:bg-background/60 dark:shadow-secondary">
       <div className="mx-4 sm:mx-8 flex h-14 items-center">
@@ -15,8 +21,10 @@ export function Navbar({ title }: NavbarProps) {
           <h1 className="font-bold">{title}</h1>
         </div>
         <div className="flex flex-1 items-center space-x-2 justify-end">
+        <OrganizationSwitcher appearance={{ baseTheme: theme === "dark" ? dark : undefined }} />
+
           <ModeToggle />
-          <UserNav />
+          <UserButton />
         </div>
       </div>
     </header>

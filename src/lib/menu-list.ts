@@ -5,7 +5,12 @@ import {
   Bookmark,
   SquarePen,
   LayoutGrid,
-  LucideIcon
+  LucideIcon,
+  AlertTriangle,
+  Archive,
+  List,
+  Map,
+  Ruler
 } from "lucide-react";
 
 type Submenu = {
@@ -30,72 +35,102 @@ type Group = {
 export function getMenuList(pathname: string): Group[] {
   return [
     {
-      groupLabel: "",
+      groupLabel: "Sites",
       menus: [
         {
-          href: "/dashboard",
-          label: "Dashboard",
-          active: pathname.includes("/dashboard"),
-          icon: LayoutGrid,
+          href: "/sites",
+          label: "List",
+          active: pathname.includes("/sites"),
+          icon: List,
+          submenus: []
+        },
+        {
+          href: "/sites/map",
+          label: "Map",
+          active: pathname.includes("/sites/map"),
+          icon: Map,
+          submenus: []
+        },
+      ]
+    },
+    {
+      groupLabel: "Assets",
+      menus: [
+        {
+          href: "/assets",
+          label: "List",
+          active: pathname.includes("/assets"),
+          icon: List,
+          submenus: []
+        },
+        {
+          href: "/assets/map",
+          label: "Map",
+          active: pathname.includes("/assets/map"),
+          icon: Map,
+          submenus: []
+        }
+        
+      ]
+
+    },
+    {
+      groupLabel: "Devices",
+      menus: [
+        {
+          href: "/devices",
+          label: "List",
+          active: pathname.match(/\/devices\/?$/),
+          icon: List,
+          submenus: []
+        },
+        {
+          href: "/devices/map",
+          label: "Map",
+          active: pathname.includes("/devices/map"),
+          icon: Map,
           submenus: []
         }
       ]
     },
     {
-      groupLabel: "Contents",
+      groupLabel: "Alerts",
       menus: [
         {
-          href: "",
-          label: "Posts",
-          active: pathname.includes("/posts"),
-          icon: SquarePen,
-          submenus: [
-            {
-              href: "/posts",
-              label: "All Posts",
-              active: pathname === "/posts"
-            },
-            {
-              href: "/posts/new",
-              label: "New Post",
-              active: pathname === "/posts/new"
-            }
-          ]
-        },
-        {
-          href: "/categories",
-          label: "Categories",
-          active: pathname.includes("/categories"),
-          icon: Bookmark,
+          href: "/alerts/open",
+          label: "Open",
+          active: pathname.includes("/alerts/open"),
+          icon: AlertTriangle,
           submenus: []
         },
         {
-          href: "/tags",
-          label: "Tags",
-          active: pathname.includes("/tags"),
-          icon: Tag,
+          href: "/alerts/closed",
+          label: "Closed",
+          active: pathname.includes("/alerts/closed"),
+          icon: Archive,
+          submenus: []
+        },
+        {
+          href: "/alerts/map",
+          label: "Map",
+          active: pathname.includes("/alerts/map"),
+          icon: Map,
           submenus: []
         }
       ]
     },
     {
-      groupLabel: "Settings",
+      groupLabel: "Rules",
       menus: [
         {
-          href: "/users",
-          label: "Users",
-          active: pathname.includes("/users"),
-          icon: Users,
-          submenus: []
-        },
-        {
-          href: "/account",
-          label: "Account",
-          active: pathname.includes("/account"),
-          icon: Settings,
+          href: "/rules",
+          label: "List",
+          active: pathname.includes("/rules/list"),
+          icon: List,
           submenus: []
         }
       ]
     }
+  
   ];
 }
